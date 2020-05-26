@@ -1,18 +1,19 @@
+// Package mergesort is a package implementing merge sort algorithm for int
 package mergesort
 
-// MergeSort is
+// MergeSort is struct for Merge Sort
 type MergeSort struct{}
 
-// Sort is
+// Sort executes merge sort
 func (m MergeSort) Sort(nums []int) []int {
 	return m.mSort(nums, 0, len(nums)-1)
 }
 
 func (m MergeSort) mSort(nums []int, left, right int) []int {
 	if left < right {
-		mid := (left + right - 1) / 2
+		mid := (left + (right - 1)) / 2
 
-		m.mSort(nums, 0, mid)
+		m.mSort(nums, left, mid)
 		m.mSort(nums, mid+1, right)
 		m.merge(nums, left, mid, right)
 	}
@@ -38,7 +39,7 @@ func (m MergeSort) merge(nums []int, left, mid, right int) {
 	k := left
 
 	for i < len(leftSide) && j < len(rightSide) {
-		if leftSide[i] < rightSide[j] {
+		if leftSide[i] <= rightSide[j] {
 			nums[k] = leftSide[i]
 			i++
 		} else {

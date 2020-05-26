@@ -21,36 +21,40 @@ import (
 var algos = []sort.Sort{
 	b.BubbleSort{},
 	s.SelectionSort{},
-	m.MergeSort{},
 	i.InsertionSort{},
 	q.Quicksort{},
+	m.MergeSort{},
 }
 
 func cases() []map[string][]int {
 	return []map[string][]int{
-		map[string][]int{
+		{
 			"input":    []int{9, 1, 8, 6, 2, 4},
 			"expected": []int{1, 2, 4, 6, 8, 9},
 		},
-		map[string][]int{
+		{
 			"input":    []int{9, 8, 6, 4, 2, 1},
 			"expected": []int{1, 2, 4, 6, 8, 9},
 		},
-		map[string][]int{
+		{
 			"input":    []int{1, 2, 4, 6, 8, 9},
 			"expected": []int{1, 2, 4, 6, 8, 9},
 		},
-		map[string][]int{
+		{
 			"input":    []int{},
 			"expected": []int{},
 		},
-		map[string][]int{
+		{
 			"input":    []int{0},
 			"expected": []int{0},
 		},
-		map[string][]int{
+		{
 			"input":    []int{-1, -2, -4, -6, -8, -9},
 			"expected": []int{-9, -8, -6, -4, -2, -1},
+		},
+		{
+			"input":    longRandNums(),
+			"expected": []int{0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9},
 		},
 	}
 }
@@ -80,7 +84,7 @@ func TestSort(t *testing.T) {
 	}
 }
 
-func BenchmarkSort(testB *testing.B) {
+func BenchmarkBubbleSort(testB *testing.B) {
 	nums := longRandNums()
 	for i := 0; i < testB.N; i++ {
 		b.BubbleSort{}.Sort(nums)
@@ -94,11 +98,10 @@ func BenchmarkSortQuicksort(testB *testing.B) {
 	}
 }
 
-// TODO: I dunno why the merge sort benchmark seems to take forever to finish
-// need to find why
-// func BenchmarkMergeSort(testB *testing.B) {
-// 	nums := longRandNums()
-// 	for i := 0; i < testB.N; i++ {
-// 		m.MergeSort{}.Sort(nums)
-// 	}
-// }
+func BenchmarkMergeSort(testB *testing.B) {
+	nums := longRandNums()
+	mg := m.MergeSort{}
+	for i := 0; i < testB.N; i++ {
+		mg.Sort(nums)
+	}
+}

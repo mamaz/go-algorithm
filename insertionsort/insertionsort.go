@@ -1,9 +1,10 @@
+// Package insertionsort implements Insertion Sort
 package insertionsort
 
-// InsertionSort is
+// InsertionSort is struct for implementing Insertion Sort
 type InsertionSort struct{}
 
-// Sort is
+// Sort implements insertion sort
 func (i InsertionSort) Sort(nums []int) []int {
 	for i := 1; i < len(nums); i++ {
 		value := nums[i]

@@ -1,9 +1,10 @@
+// Package selectionsort implements Selection Sort for int
 package selectionsort
 
-// SelectionSort is
+// SelectionSort is struct implementing Selection Sort
 type SelectionSort struct{}
 
-// Sort is
+// Sort implements Selection sort
 func (s SelectionSort) Sort(nums []int) []int {
 	for step := range nums {
 		minIndex := step

@@ -91,6 +91,13 @@ func BenchmarkBubbleSort(testB *testing.B) {
 	}
 }
 
+func BenchmarkSelectionSortSort(testB *testing.B) {
+	nums := longRandNums()
+	for i := 0; i < testB.N; i++ {
+		s.SelectionSort{}.Sort(nums)
+	}
+}
+
 func BenchmarkSortQuicksort(testB *testing.B) {
 	nums := longRandNums()
 	for i := 0; i < testB.N; i++ {

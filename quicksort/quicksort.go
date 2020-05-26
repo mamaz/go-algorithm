@@ -1,7 +1,10 @@
+// Package quicksort implements Quick Sort for int
 package quicksort
 
+// Quicksort is a struct implementing QuickSort
 type Quicksort struct{}
 
+// Sort implements quicksort
 func (q Quicksort) Sort(nums []int) []int {
 	return q.qSort(nums, 0, len(nums)-1)
 }

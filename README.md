@@ -14,6 +14,21 @@ Learning common algorithm by writing it in Go.
 
 - Selection Sort
 
+## Test
+
+Run test
+
+```golang
+go test ./...
+```
+
+Run Benchmark
+
+```golang
+go test -benchmem mamazo/sorting/tests -bench .
+```
+
+
 ## License
 
 MIT
